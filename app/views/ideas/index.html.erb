@@ -1,0 +1,25 @@
+
+<div class="page-header">
+  <h1 style="color:blue;">All My Ideas</h1>
+</div>
+
+<div class="row">
+  <% @ideas.each do |idea| %>
+    <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <%= image_tag(idea.picture_url, :width => 60, :height => 60) if idea.picture.present? %>
+      <div class="caption">
+        <h3 style="color:green"><%= link_to idea.name, idea %> </h3>
+        <p><%= idea.description %></p>
+        <p>
+          <%= link_to 'Edit', edit_idea_path(idea), class: 'btn btn-info' %>
+          <%= link_to 'Destroy', idea, confirm: 'Are you sure?', method: :delete, class: 'btn btn-danger' %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  
+</div>
+<hr>
+  <%= link_to 'New Idea', new_idea_path, class: 'btn btn-success' %>
